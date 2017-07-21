@@ -49,6 +49,11 @@ class Application(Frame):
         self.text3 = Text(root)
         self.text3.place(x=200,y=20,width=245,height=350)
 
+        self.scrollbar = Scrollbar(root)
+        self.scrollbar.place(x=445, y=150) 
+        self.scrollbar['command'] = self.text3.yview        #привязка скроллбара к текстовому полю
+        self.text3['yscrollcommand'] = self.scrollbar.set   #привязка текстового поля к скроллбару
+
     def remove_new_words(self):
         f = open('new_words.txt', 'w')
         f.write('')
@@ -235,7 +240,7 @@ class Application(Frame):
 #основная часть
 root = Tk()
 root.title("Переводишко")
-root.geometry("450x400")
+root.geometry("460x400")
 
 app = Application(root)
 
